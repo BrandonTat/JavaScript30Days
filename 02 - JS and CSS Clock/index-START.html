@@ -72,7 +72,7 @@
     let secondHand = document.querySelector('.second-hand');
     let minHand = document.querySelector('.min-hand');
     let hourHand = document.querySelector('.hour-hand');
-    
+
     function setSeconds() {
       let date = new Date();
       let seconds = date.getSeconds();
@@ -80,7 +80,20 @@
       secondHand.style.transform = `rotate(${secondsPos}deg)`;
     }
 
-    setInterval(setSeconds, 1000);
+    function setMinutes() {
+      let date = new Date();
+      let minutes = date.getMinutes();
+      let minPos = ((minutes / 60) * 360) + 90;
+      console.log(minutes);
+      minHand.style.transform = `rotate(${minPos}deg)`;
+    }
+
+    function setTime() {
+      setSeconds();
+      setMinutes();
+    }
+
+    setInterval(setTime, 1000);
   </script>
 </body>
 </html>
